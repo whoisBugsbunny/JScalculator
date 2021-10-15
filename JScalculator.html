@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="noNeedtoRemember.css">
+    <link rel="stylesheet" href="JScalculator.css">
+    <script type="text/javascript" src="Calcuator.js"></script>
+    <title>JavaScript Calculator</title>
+</head>
+
+
+<body>
+    <div class="container center">
+        <br>
+        <h1>JS Calculator</h1>
+        <span>two variables</span> <input type="checkbox" onclick="auto()" id="auto" name="auto"><label for="auto">auto</label>
+    </div>
+    <div class="container center bg-light">
+        <input type="number" id="num1">
+        <select class="dropdown" id="operation">
+            <option value="1" selected>+</option>
+            <option value="2">-</option>
+            <option value="3">*</option>
+            <option value="4">/</option>
+            <option value="5">^</option>
+        </select>
+        <input type="number" id="num2">
+        <span>=</span>
+        <span id="result">result</span>
+        <button id="submit" onclick="calculate()">calculate</button>
+
+    </div>
+    <div class="container center">
+        <br>
+        <h1>JS Calculator</h1>
+        <p>'c' to clear, 'h' to clear history</p>
+    </div>
+    <div class="container center bg-light" style="justify-content: center;align-items: center;">
+        <div class="cal-box">
+            <div id="preres" class="preres">
+            </div>
+            <p id="result1" class="result1 main-result">0</p>
+            <input class="input-box" type="text" id="question" placeholder="type here" onkeydown="onenter(event)" autocomplete="off">
+        </div>
+    </div>
+</body>
+
+</html>

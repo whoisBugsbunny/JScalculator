@@ -1,0 +1,90 @@
+/* for practice */
+
+.container {
+    padding: 10px 15px 10px 15px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    max-width: 1200px;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+.cal-box {
+    padding: 10px;
+    position: relative;
+    max-width: 300px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    margin: 5px auto 5px auto;
+}
+
+.input-box {
+    font-size: x-large;
+    height: 50px;
+    padding-inline-start: 5px;
+    padding-inline-end: 5px;
+    outline: none;
+    width: 100%;
+    border: none;
+}
+
+.result1 {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.main-result {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.preres {
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    padding: 10px;
+}
+
+#res1 {
+    color: rgb(88, 88, 88);
+}
+
+#res2 {
+    color: rgb(116, 116, 116);
+}
+
+#res3 {
+    color: rgb(144, 144, 144);
+}
+
+#res4 {
+    color: rgb(172, 172, 172);
+}
+
+#res5 {
+    color: rgb(200, 200, 200);
+}

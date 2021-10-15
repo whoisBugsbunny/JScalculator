@@ -1,6 +1,8 @@
 * {
     margin-top: 0;
+    scroll-behavior: smooth;
     box-sizing: border-box;
+    scrollbar-width: thin;
 }
 
 .bg-primary {

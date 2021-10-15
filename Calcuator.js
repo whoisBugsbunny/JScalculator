@@ -33,89 +33,51 @@ function calculate() {
 }
 
 // main calculate
-var a = 0;
-var b = 0;
-var c = 0;
-var tem = 0;
-var op = '';
-var que1 = '';
-var once = true;
 
-function maincal() {
-    que1 = document.getElementById("question").value;
-    var res = document.getElementById("result1");
-    var arr = que1.split("");
-    arr.push("end");
-    for (let i = 0; i < arr.length; i++) {
-
-        if (!(parseInt(arr[i]) | parseFloat(arr[i]) | arr[i] == "0")) {
-            a = parseFloat(arr.slice(tem, i).join(''));
-            tem = i + 1;
-            if (!op == '') {
-                if (op == "+") {
-                    c = b + a;
-                    b = c;
-                }
-                if (op == "-") {
-                    c = b - a;
-                }
-                if (op == "*") {
-                    c = b * a;
-                }
-                if (op == "/") {
-                    c = b / a;
-                }
-                if (op == "^") {
-                    c = Math.pow(b, a);
-                }
-            } else {
-                c = a;
-            }
-            if (arr[i] == "+") {
-                op = '+';
-            }
-            if (arr[i] == "-") {
-                op = '-';
-            }
-            if (arr[i] == "*") {
-                op = '*';
-            }
-            if (arr[i] == "/") {
-                op = '/';
-            }
-            if (arr[i] == "^") {
-                op = '^';
-            }
-
-            if (once == true) {
-                b = a;
-                once = false;
-            } else {
-                b = c;
-            }
-
-        }
-    }
-
-    que1 == "" ? res.innerHTML = "0" : isNaN(c) ? res.innerHTML = op : res.innerHTML = c;
-    tem = 0;
-    op = '';
+function printline(q, r) {
+    const rsdiv = document.getElementById("preres");
+    rsdiv.insertAdjacentHTML('beforeend', `<p id="res1" class="result1">${q} = ${r}</p>`);
+    rsdiv.scrollTop = rsdiv.scrollHeight;
 }
 
-setInterval(maincal, 500);
-
-function printline() {
-    document.getElementById("res5").innerHTML = document.getElementById("res4").innerHTML;
-    document.getElementById("res4").innerHTML = document.getElementById("res3").innerHTML;
-    document.getElementById("res3").innerHTML = document.getElementById("res2").innerHTML;
-    document.getElementById("res2").innerHTML = document.getElementById("res1").innerHTML;
-    document.getElementById("res1").innerHTML = que1 + " = " + c;
-}
 
 function onenter(event) {
-    var x = event.key;
-    if (x == "Enter") {
-        maincal();
-        printline();
+    ecode = event.keyCode;
+    if (event.repeat) { return }
+    const que = document.getElementById("question");
+    const isnumber = (ecode >= 48 && ecode <= 57) || (ecode >= 96 && ecode <= 105);
+    const isoperator = (([187, 189, 190, 191, 106, 107, 109, 110, 111].indexOf(ecode)) != -1);
+    const isarrow = (ecode >= 37 && ecode <= 40);
+    if (isnumber || isoperator || (event.key == "Enter") || ecode == 8 || isarrow) {
+        if (event.key == "Enter") {
+            var result;
+            try {
+                result = eval(que.value);
+            } catch (err) {
+                console.log(err.message);
+                if (err.message == 'Unexpected end of input') {
+                    result = eval(que.value.toString().slice(0, -1));
+                } else {
+                    return
+                }
+            }
+            const res = document.getElementById("result1");
+            res.innerText = result;
+            printline(que.value, result);
+        }
+    } else {
+        event.preventDefault();
+    }
+    // var keynum;
+    // keynum = ecode;
+    // console.log(keynum);
+    if (ecode === 67) {
+        event.preventDefault();
+        que.value = '';
+    }
+    if (ecode === 72) {
+        event.preventDefault();
+        const rsdiv = document.getElementById("preres");
+        rsdiv.innerHTML = '';
     }
 }
